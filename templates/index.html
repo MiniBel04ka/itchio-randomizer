@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Случайные игры с itch.io</title>
+    <title>Random games with itch.io</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -58,19 +58,19 @@
 
         async function revealGame(button) {
             button.disabled = true;
-            button.textContent = "Загрузка...";
+            button.textContent = "Loding...";
             try {
                 const response = await fetch('/get_game');
                 const data = await response.json();
 
                 if (response.ok) {
                     window.open(data.url, '_blank');
-                    button.textContent = "Сгенерировать игру";
+                    button.textContent = "Generate game";
                 } else {
-                    button.textContent = "Ошибка: " + data.error;
+                    button.textContent = "Error: " + data.error;
                 }
             } catch (error) {
-                button.textContent = "Ошибка сети";
+                button.textContent = "Network error";
             }
             button.disabled = false;
         }
@@ -78,8 +78,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Случайные игры с itch.io</h1>
-        <button onclick="revealGame(this)">Сгенерировать игру</button>
+        <h1>Random games with itch.io</h1>
+        <button onclick="revealGame(this)">Generate game</button>
     </div>
 </body>
 </html>

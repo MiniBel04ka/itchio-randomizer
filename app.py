@@ -2,9 +2,6 @@ from flask import Flask, render_template, jsonify
 import requests
 from bs4 import BeautifulSoup
 import random
-from pyngrok import ngrok
-import subprocess
-import time
 
 app = Flask(__name__)
 
@@ -38,7 +35,8 @@ def get_game():
     if game:
         return jsonify({'title': game[0], 'url': f'{game[1]}'})
     else:
-        return jsonify({'error': 'Не удалось найти игру'}), 500
+        return jsonify({'error': 'Couldn`t find the game'}), 500
+    
 if __name__ == '__main__':
     app.run(debug=True)
 
